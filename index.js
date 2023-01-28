@@ -1,11 +1,15 @@
- const express = require('express');
- const app=express();
+const express = require('express');
+const app = express();
 
- app.set('view engine','ejs')
+app.set('view engine', 'ejs')
 
- app.get('/', (req, res)=>{
-    console.log('hello')
-    res.render('index')
- })
+app.get('/', (req, res) => {
+   console.log('hello')
+   res.render('index', { text: "جعلها تجلس على وجهي" })
+})
 
- app.listen(5000)
+const userRouter= require('./routes/users')
+
+app.use('./users', userRouter)
+
+app.listen(5000)
