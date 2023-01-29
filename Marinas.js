@@ -46,3 +46,6 @@ const marinas =[
     },
     
 ]
+
+
+module.exports=marinas;
