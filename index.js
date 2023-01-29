@@ -1,14 +1,21 @@
 const express = require('express');
 const app = express();
-const marinas=require('./Marinas')
 const logger =require('./middleware/logger')
 
 app.set('view engine', 'ejs')
 
 
 
+//init middleware
 app.use(logger)
 
+//body parser middleware
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+
+
+//marina api routes
+app.use('/api/marinas', require('./routes/api/marina'))
 
 
 
@@ -16,7 +23,7 @@ app.use(logger)
 
 app.get('/', (req, res) => {
    console.log('hello')
-   res.render('index', { text: "جعلها تجلس على وجهي" })
+   res.download('index.js')
 })
 
 
